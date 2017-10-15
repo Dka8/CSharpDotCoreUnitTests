@@ -9,11 +9,14 @@ namespace Prime.UnitTests.Services {
 			primeService = new PrimeService();
 		}
 
-		[Fact]
-		public void ReturnFalseGivenValueOf1() {
-			var result = primeService.isPrime(1);
+		[Theory]
+		[InlineData(-1)]
+		[InlineData(0)]
+		[InlineData(1)]
+		public void ReturnFalseGivenValuesLessThan2(int value) {
+			var result = primeService.isPrime(value);
 
-			Assert.False(result, "1 shoulk not be prime");
+			Assert.False(result, $"{value} shoulh not be prime");
 		}
 	}
 }
